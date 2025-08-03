@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ashutosh Music</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Temporary inline style for horizontal layout preview */
+        nav ul {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+        }
+        nav ul li {
+            display: inline;
+        }
+        nav ul li a {
+            color: #fff;
+            background: #e72c30;
+            padding: 0.5rem 1.2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+        }
+        nav ul li a:hover {
+            background: #b71c1c;
+        }
+        main {
+            display: flex;
+            flex-direction: row;
+            gap: 2rem;
+            justify-content: center;
+            align-items: flex-start;
+            margin-top: 2rem;
+        }
+        section {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem;
+            min-width: 320px;
+            max-width: 400px;
+        }
+        .song-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            width: 100%;
+        }
+        .song-card {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 1.5rem 1rem;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            transition: box-shadow 0.2s;
+            width: 200px;
+            height: 15vw;
+        }
+        .song-card:hover {
+            box-shadow: 0 4px 16px rgba(231,44,48,0.12);
+        }
+        .song-img {
+            width: 100px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        .song-title {
+            font-weight: bold;
+            margin: 0.5rem 0 0.2rem 0;
+            color: #e72c30;
+            font-size: 1.1em;
+        }
+        .song-desc {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        .song-artist {
+            font-size: 1em;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+        .song-title {
+            font-weight: bold;
+            margin: 0 0 0.2rem 0;
+            color: #e72c30;
+        }
+        .song-desc {
+            margin: 0;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        body {
+            background: linear-gradient(90deg, #e72c30 0%, #1e1e1e 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #222;
+        }
+        header {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 1.5rem 0 1rem 0;
+            text-align: center;
+        }
+        footer {
+            background: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
+        }
+        .listen-btn {
+            margin-top: 1rem;
+            padding: 0.6rem 1.5rem;
+            background: #e72c30;
+            color: #fff;
+            border-radius: 22px;
+            border: none;
+            font-weight: bold;
+            font-size: 1.05em;
+            letter-spacing: 0.5px;
+            box-shadow: 0 2px 8px rgba(231,44,48,0.08);
+            transition: background 0.2s;
+            cursor: pointer;
+        }
+        .listen-btn:hover {
+            background: #b71c1c;
+        }
+        .sidebar-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 220px;
+            background: #1e1e1e;
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 2rem;
+            z-index: 100;
+        }
+        .sidebar-nav nav ul {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-nav nav ul li {
+            display: block;
+        }
+        .sidebar-nav nav ul li a {
+            color: #fff;
+            background: #e72c30;
+            padding: 0.7rem 2rem;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background 0.2s;
+            display: block;
+            text-align: center;
+        }
+        .sidebar-nav nav ul li a:hover {
+            background: #b71c1c;
+        }
+        main {
+            margin-left: 240px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Ashutosh Music</h1>
+    </header>
+    <aside class="sidebar-nav">
+        <h2 style="color:#fff; text-align:center; margin-bottom:2rem; font-size:2em; font-weight:bold;">Ashutosh Music</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#playlists">Playlists</a></li>
+                <li><a href="Songs.html">Songs</a></li>
+                <li><a href="#artists">Artists</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <!-- <section id="songs"> -->
+            <div class="song-grid">
+                <div class="song-card">
+                    <img src="images/tumhiho.png" alt="Tum Hi Ho" class="song-img" />
+                    <div class="song-title">Tum Hi Ho</div>
+                    <button onclick="location.href='song.html?id=0'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/dilber.png" alt="Dilbar" class="song-img" />
+                    <div class="song-title">Dilbar</div>
+                    <button onclick="location.href='song.html?id=1'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/djwalebabu.png" alt="DJ Waley Babu" class="song-img" />
+                    <div class="song-title">DJ Waley Babu</div>
+                    <button onclick="location.href='song.html?id=2'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/teriore.png" alt="Teri Ore" class="song-img" />
+                    <div class="song-title">Teri Ore</div>
+                    <button onclick="location.href='song.html?id=3'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/boldo.png" alt="Bol Do Na Zara" class="song-img" />
+                    <div class="song-title">Bol Do Na Zara</div>
+                    <button onclick="location.href='song.html?id=4'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/lut.png" alt="Lut Gaye" class="song-img" />
+                    <div class="song-title">Lut Gaye</div>
+                    <button onclick="location.href='song.html?id=5'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/teriore.png" alt="Sun Raha Hai" class="song-img" />
+                    <div class="song-title">Sun Raha Hai</div>
+                    <button onclick="location.href='song.html?id=6'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/tumhiho.png" alt="Channa Mereya" class="song-img" />
+                    <div class="song-title">Channa Mereya</div>
+                    <button onclick="location.href='song.html?id=7'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/djwalebabu.png" alt="Aankh Marey" class="song-img" />
+                    <div class="song-title">Aankh Marey</div>
+                    <button onclick="location.href='song.html?id=8'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/dilber.png" alt="Main Rahoon Ya Na" class="song-img" />
+                    <div class="song-title">Main Rahoon Ya Na</div>
+                    <button onclick="location.href='song.html?id=9'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/lutgaye.png" alt="Lut Gaye Jubin" class="song-img" />
+                    <div class="song-title">Lut Gaye Jubin</div>
+                    <button onclick="location.href='song.html?id=10'" class="listen-btn">Listen</button>
+                </div>
+                <div class="song-card">
+                    <img src="images/teriore.png" alt="Hasi Ban Gaye" class="song-img" />
+                    <div class="song-title">Hasi Ban Gaye</div>
+                    <button onclick="location.href='song.html?id=11'" class="listen-btn">Listen</button>
+                </div>
+            </div>
+        <!-- </section> -->
+    </main>
+    <footer>
+        <p>&copy; 2023 Music Website. All rights reserved.</p>
+    </footer>
+    <script src="js/main.js"></script>
+    <script src="js/song.js"></script>
+</html>
