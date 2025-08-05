@@ -3,83 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Song Player</title>
+    <title>Song Details</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
         body {
-            background: linear-gradient(120deg, #e45555 0%, #fff 100%);
-            font-family: Arial, sans-serif;
-            color: #333;
+            background: linear-gradient(90deg, #e72c30 0%, #1e1e1e 100%);
+            font-family: 'Segoe UI', Arial, sans-serif;
+            color: #222;
         }
-        .player-container {
-            max-width: 480px;
-            margin: 48px auto;
-            background: #fff;
-            border-radius: 18px;
-            box-shadow: 0 4px 24px rgba(231,44,48,0.10);
-            padding: 2.5rem 2rem 2rem 2rem;
+        header {
+            background: #1e1e1e;
+            color: #fff;
+            padding: 1.5rem 0 1rem 0;
             text-align: center;
         }
-        .player-img {
-            width: 170px;
-            height: 170px;
-            object-fit: cover;
-            border-radius: 16px;
-            margin-bottom: 1.2rem;
-            box-shadow: 0 2px 12px rgba(231,44,48,0.10);
-        }
-        .player-title {
-            font-size: 2.1em;
-            color: #e72c30;
-            margin-bottom: 0.3rem;
-            font-weight: bold;
-        }
-        .player-artist {
-            font-size: 1.15em;
-            color: #333;
-            margin-bottom: 0.7rem;
-            font-weight: 500;
-        }
-        .player-desc {
-            color: #444;
-            margin-bottom: 2rem;
-            font-size: 1em;
-        }
-        .styled-audio {
-            width: 100%;
-            margin: 1.5rem 0 1rem 0;
-            background: #f7f7f7;
-            border-radius: 8px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
-        }
-        .back-btn {
-            display: inline-block;
-            margin-top: 1.2rem;
-            padding: 0.6rem 1.5rem;
-            background: #e72c30;
+        .sidebar-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 100vh;
+            width: 220px;
+            background: #1e1e1e;
             color: #fff;
-            border-radius: 22px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding-top: 2rem;
+            z-index: 100;
+        }
+        .sidebar-nav nav ul {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .sidebar-nav nav ul li {
+            display: block;
+        }
+        .sidebar-nav nav ul li a {
+            color: #fff;
+            background: #e72c30;
+            padding: 0.7rem 2rem;
+            border-radius: 20px;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1em;
-            letter-spacing: 0.5px;
-            box-shadow: 0 2px 8px rgba(231,44,48,0.08);
             transition: background 0.2s;
+            display: block;
+            text-align: center;
         }
-        .back-btn:hover {
+        .sidebar-nav nav ul li a:hover {
             background: #b71c1c;
+        }
+        main {
+            margin-left: 240px;
+        }
+        .song-detail {
+            background: #fff;
+            border-radius: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+            padding: 2rem;
+            max-width: 500px;
+            margin: 3rem auto;
+            text-align: center;
+        }
+        .song-img {
+            width: 180px;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 12px;
+            margin-bottom: 1rem;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+        }
+        .song-title {
+            font-weight: bold;
+            margin: 0.5rem 0 0.2rem 0;
+            color: #e72c30;
+            font-size: 1.5em;
+        }
+        .listen-audio {
+            margin-top: 1.5rem;
+            width: 100%;
+        }
+        footer {
+            background: #1e1e1e;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 2rem;
         }
     </style>
 </head>
 <body>
-    <div class="player-container" id="player-container">
-        <img src="" alt="Song" class="player-img" id="player-img" style="display:none;" />
-        <div class="player-title" id="player-title"></div>
-        <div class="player-artist" id="player-artist"></div>
-        <div class="player-desc" id="player-desc"></div>
-        <audio class="styled-audio" id="audio-player" controls controlsList="nodownload"></audio>
-    </div>
-    <a href="index.html" class="back-btn">Back to Home</a>
+    <header>
+        <h1>Ashutosh Music</h1>
+    </header>
+    <aside class="sidebar-nav">
+        <h2 style="color:#fff; text-align:center; margin-bottom:2rem; font-size:2em; font-weight:bold;">Ashutosh Music</h2>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#playlists">Playlists</a></li>
+                <li><a href="Songs.html">Songs</a></li>
+                <li><a href="#artists">Artists</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+        </nav>
+    </aside>
+    <main>
+        <div class="song-detail" id="song-detail">
+            <!-- Song details will be loaded here -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2023 Music Website. All rights reserved.</p>
+    </footer>
     <script src="js/song.js"></script>
 </body>
 </html>
