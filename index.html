@@ -16,10 +16,30 @@
         /* Temporary inline style for horizontal layout preview */
         nav ul {
             display: flex;
+            flex-direction: row;
             justify-content: center;
             gap: 2rem;
             list-style: none;
             padding: 0;
+        }
+        .sidebar-nav nav {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .sidebar-nav nav ul {
+            display: flex;
+            flex-direction: column !important;
+            align-items: center;
+            gap: 1.5rem;
+            width: 100%;
+            padding: 0;
+            margin: 0 auto;
+        }
+        .sidebar-nav nav ul li {
+            width: 160px;
+            display: flex;
+            justify-content: center;
         }
         nav ul li {
             display: inline;
@@ -148,7 +168,7 @@
         .sidebar-nav {
             position: fixed;
             top: 0;
-            left: 0;
+            left: -240px;
             height: 100vh;
             width: 220px;
             background: #1e1e1e;
@@ -160,11 +180,36 @@
             z-index: 100;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.5s;
+            box-shadow: 2px 0 16px rgba(0,0,0,0.08);
+            transition: left 0.5s cubic-bezier(.4,0,.2,1), opacity 0.5s;
         }
         .sidebar-nav.show {
+            left: 0;
             opacity: 1;
             pointer-events: auto;
+        }
+        .sidebar-nav + main {
+            transition: margin-left 0.5s cubic-bezier(.4,0,.2,1);
+        }
+        .sidebar-nav.show + main {
+            margin-left: 220px;
+            padding-left: 2.5rem;
+        }
+        @media (max-width: 1024px) {
+            .sidebar-nav.show + main {
+                margin-left: 0;
+            }
+        }
+        .song-grid {
+            transition: width 0.5s cubic-bezier(.4,0,.2,1);
+            margin-left: 5.5rem;
+        }
+        .sidebar-nav.show ~ main .song-grid {
+            max-width: calc(100vw - 240px);
+            margin-left: 0.5vw;
+        }
+        .sidebar-nav.show ~ main .song-grid {
+            max-width: calc(100vw - 240px);
         }
         .sidebar-nav.light-mode {
             background: #fff9e5 !important;
@@ -261,13 +306,13 @@
 </head>
 <body>
     <header>
-        <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; margin-left:10%;">
-            <img src="assets/menu.png" id="menuIcon" alt="Menu" style="width:38px; height:38px; cursor:pointer; margin-right:1rem; padding-left:2.5rem;">
-            <h1 style="margin:0; float:left; padding-left:0.5rem; text-align:left;">Ashutosh Music</h1>
-            <form class="search-form" style="display:flex; align-items:center; margin-right:2rem;" onsubmit="event.preventDefault();">
+        <div style="display:flex; align-items:center; gap:1.5rem; flex-wrap:wrap; margin-left:13vw;">
+            <img src="assets/menu.png" id="menuIcon" alt="Menu" style="width:38px; height:38px; cursor:pointer; margin-right:1rem; padding-left:3rem;">
+            <h2 style="margin:0; float:left; padding-left:0.5rem; text-align:left;">Ashutosh Music</h2>
+            <form class="search-form" style="display:flex; align-items:center; margin-right:1rem;" onsubmit="event.preventDefault();">
                 <input type="text" id="searchInput" placeholder="Search songs, artists..." class="search-input" style="padding:0.5rem 1rem; border-radius:18px; border:none; font-size:1em; min-width:220px; max-width:600px; width:350px; transition:width 0.2s;">
             </form>
-            <label class="switch" style="display:flex; align-items:center; gap:1.5rem; cursor:pointer; margin-right:auto;">
+            <label class="switch" style="display:flex; align-items:center; gap:1.5rem; cursor:pointer; margin-right:4vw;">
                 <input type="checkbox" id="modeSwitch" style="display:none;">
                 <span style="width:40px; height:22px; background:#ccc; border-radius:22px; position:relative; display:inline-block;">
                     <span id="slider" style="position:absolute; left:2px; top:2px; width:18px; height:18px; background:#fff; border-radius:50%; transition:left 0.2s;"></span>
@@ -404,8 +449,9 @@
         // Sidebar menu show/hide logic
         var menuIcon = document.getElementById('menuIcon');
         var sidebarNav = document.getElementById('sidebarNav');
-        menuIcon.addEventListener('click', function() {
-            sidebarNav.classList.add('show');
+        menuIcon.addEventListener('click', function(e) {
+            e.stopPropagation();
+            sidebarNav.classList.toggle('show');
         });
         // Optional: click outside to hide
         document.addEventListener('click', function(e) {
